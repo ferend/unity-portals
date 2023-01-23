@@ -11,26 +11,7 @@ public static class VectorMethods
 
     public abstract class Mechanic : MonoBehaviour
     {
-        protected bool CanPlay
-        {
-            get => GameFlowManager.Instance.canPlay;
-            set => GameFlowManager.Instance.canPlay = value;
-        }
-
-        public virtual IEnumerator OnStart()
-        {
-            yield break;
-        }
-
-        public virtual IEnumerator OnEnd()
-        {
-            yield break;
-        }
-
-        public virtual IEnumerator OnFail()
-        {
-            yield break;
-        }
+        
 
         public virtual void OnDown()
         {

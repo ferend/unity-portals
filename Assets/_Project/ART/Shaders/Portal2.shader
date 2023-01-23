@@ -3,6 +3,7 @@ Shader "Custom/Portal2"
     Properties
     {
         _InactiveColour ("Inactive Colour", Color) = (1, 1, 1, 1)
+        _TwirlStrenght ("Twirl Strenght",float)=1
     }
     SubShader
     {
@@ -28,10 +29,12 @@ Shader "Custom/Portal2"
                 float4 screenPos : TEXCOORD0;
             };
 
-       
+
+
             sampler2D _MainTex;
             float4 _InactiveColour;
             int displayMask ; // set to 1 to display texture, otherwise will draw test colour
+            float  _TwirlStrength;
             
 
             Interpolator vert (MeshData v)
@@ -41,10 +44,10 @@ Shader "Custom/Portal2"
                 o.screenPos = ComputeScreenPos(o.vertex);
                 return o;
             }
-
+            
             float4 frag (Interpolator i) : SV_Target
             {
-                float2 uv = i.screenPos.xy / i.screenPos.w;
+                   float2 uv = i.screenPos.xy / i.screenPos.w;
                 float4 portalCol = tex2D(_MainTex, uv);
                 return portalCol * displayMask + _InactiveColour * (1-displayMask);
             }

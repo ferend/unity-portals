@@ -17,6 +17,7 @@ namespace _Project.Scripts.Models
        private Camera _portalCam;
        private RenderTexture _viewTexture;
        public List<PortalTeleport> _portalTeleporters;
+       public Material a;
        
        private void Awake()
        {
@@ -25,14 +26,12 @@ namespace _Project.Scripts.Models
            _portalCam.enabled = false;
            _screen.material.SetInt ("displayMask", 1);
            _portalTeleporters = new List<PortalTeleport>();
-
        }
 
        private void LateUpdate()
        {
            Render();
            TrackedTravellerLoop();
-           
        }
 
        // Dot product calculation for position from portal of loop over all tracked travellers to figure out if they should be 
