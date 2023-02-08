@@ -5,8 +5,12 @@ Shader "Unlit/Twirl"
     _Twirl ("Twirl", Float) = 1
   }
   SubShader {
-    Cull Off ZWrite Off ZTest Always
-
+	Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" "PreviewType" = "Plane" }
+		Blend SrcAlpha OneMinusSrcAlpha
+		ColorMask RGB
+		ZTest Greater
+		Cull Off Lighting Off ZWrite Off
+		
     Pass {
       CGPROGRAM
       #pragma vertex vert
